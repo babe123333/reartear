@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>everymoonshapedhole (v2)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <!-- Page 1 -->
+      <section class="page page--cover" data-page="cover" aria-label="Album and player">
+        <div class="cover">
+          <img class="cover__image" src="./assets/cover.png" alt="Album cover" />
+        </div>
+
+        <div class="transport" aria-label="Music controls">
+          <button class="btn" type="button" data-action="skip" aria-label="Skip">
+            <span class="btn__label">Skip</span>
+          </button>
+
+          <button class="btn btn--primary" type="button" data-action="to-poems" aria-label="Play">
+            <span class="btn__label">Play</span>
+          </button>
+
+          <button class="btn" type="button" data-action="pause" aria-label="Pause">
+            <span class="btn__label">Pause</span>
+          </button>
+        </div>
+
+        <div class="transport transport--icons" aria-label="Music controls (icons)">
+          <button class="btn" type="button" data-action="toggle-audio" aria-label="Play">
+            <span class="btn__icon" aria-hidden="true" data-audio-icon>▶︎</span>
+          </button>
+        </div>
+
+        <audio
+          id="audio"
+          preload="metadata"
+          data-tracks="./assets/track.mp3"
+        ></audio>
+
+        <footer class="credits" aria-label="Font credits">
+          <p class="credits__heading">Fonts:</p>
+          <p class="credits__line credits__ogg">Ogg Light (controls)</p>
+          <p class="credits__line credits__title">Canela Text Regular (title)</p>
+          <p class="credits__line credits__poem">Canela Text Thin Italic (poem)</p>
+        </footer>
+      </section>
+
+      <!-- Page 2 -->
+      <section class="page page--poems" data-page="poems" aria-label="Poems">
+        <div class="poems__top">
+          <button class="back" type="button" data-action="back" aria-label="Back">
+            <span class="back__label">Back</span>
+          </button>
+          <button class="back back--icon" type="button" data-action="toggle-audio" aria-label="Play">
+            <span class="btn__icon" aria-hidden="true" data-audio-icon>▶︎</span>
+          </button>
+        </div>
+
+        <p class="poems__title">Every moon-shaped hole has its concrete father</p>
+        <p class="poems">
+          Every millennial tear was made out of a feather,<br />
+          the same feather that teased everyone on getting over<br />
+          the biggest fear using the happiest idea;<br />
+          We start making promises, dinning every skin under that cardigan,<br />
+          ribbons of that little joy, we conquered the fabrics of this millennial season.<br />
+          <br />
+          Every moon-shaped hole has its concrete father,<br />
+          enough I said it seven times,<br />
+          I met this violence on an intersection of this unyielding ground<br />
+          we paint his name as an institutional corporate head,<br />
+          he’ll send us the money to buy christmas present.<br />
+          We made him a delightful joy that the mother will like and will likely to tease to flirt,<br />
+          for himself, he will get a big big smile.<br />
+          <br />
+          The rain grows thicker with shades, the hole leans to incomplete,<br />
+          for father to put on the stocking of concrete,<br />
+          we had to withdrawls things from his corporate equity.<br />
+          So father I say, do not render, go on a quest of whisper,<br />
+          you’ll meet what I’ve dreamt in a glance like a whisper,<br />
+          and get to sleep on what I’ve slept on for years that passed like a whisper,<br />
+          no need to be afraid like a whisper, it is careless and relentless,<br />
+          you’ll see what say as a child as I was.
+        </p>
+      </section>
+    </main>
+
+    <script src="./player.js"></script>
+  </body>
+</html>

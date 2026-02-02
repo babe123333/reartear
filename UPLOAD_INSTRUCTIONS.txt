@@ -1,0 +1,16 @@
+UPLOAD THIS TO REPO ROOT (so the site works)
+
+1. Go to github.com/babe123333/pobum
+2. Delete or move the old "liminal_site" folder if you want a clean start
+3. Add file → Upload files
+4. Drag ALL of these into the upload area (not the folder - the FILES inside):
+   - index.html
+   - styles.css
+   - player.js
+   - .nojekyll
+   - the entire "assets" folder (drag the folder so it uploads as assets/)
+5. Commit changes
+
+Your site will be at: https://babe123333.github.io/pobum/
+
+(Settings → Pages: Source = Deploy from branch, Branch = main, Folder = / (root))
