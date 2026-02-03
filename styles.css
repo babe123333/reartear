@@ -1,25 +1,20 @@
-/* Minimal, quiet, white */
 :root {
   --bg: #fff;
   --ink: rgba(20, 20, 20, 0.82);
   --muted: rgba(20, 20, 20, 0.55);
   --line: rgba(20, 20, 20, 0.09);
   --shadow: rgba(0, 0, 0, 0.08);
-
-  --ui: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --ui: ui-sans-serif, system-ui, sans-serif;
   --player: "OGG", var(--ui);
-  --poem: "CANELA_POEM", ui-serif, "Times New Roman", Times, serif;
-  --poemTitle: "CANELA_TITLE", ui-serif, "Times New Roman", Times, serif;
-
+  --poem: "CANELA_POEM", serif;
+  --poemTitle: "CANELA_TITLE", serif;
   color-scheme: light;
 }
 
-/* Fonts (put these files in liminal_site/assets/) */
 @font-face {
   font-family: "OGG";
   src: url("./assets/Ogg-Light.ttf") format("truetype");
   font-weight: 300;
-  font-style: normal;
   font-display: swap;
 }
 
@@ -27,7 +22,6 @@
   font-family: "CANELA_TITLE";
   src: url("./assets/CanelaText-Regular-Trial.otf") format("opentype");
   font-weight: 400;
-  font-style: normal;
   font-display: swap;
 }
 
@@ -39,30 +33,18 @@
   font-display: swap;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
-html,
-body {
+html, body {
   height: 100%;
-  background: var(--bg);
-}
-
-body {
   margin: 0;
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--ui);
-  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-main {
-  min-height: 100vh;
-}
+main { min-height: 100vh; }
 
 .page {
   min-height: 100vh;
@@ -73,17 +55,42 @@ main {
   transition: opacity 520ms ease, filter 520ms ease;
 }
 
-.page[hidden] {
-  display: none;
-}
+.page[hidden] { display: none; }
 
-/* Page 1 */
 .page--cover {
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-rows: auto auto auto auto auto auto;
   align-content: start;
   justify-items: center;
   position: relative;
 }
+
+.track-list {
+  margin: 40vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: min(420px, 82vw);
+}
+
+.track {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 4px 0;
+  cursor: pointer;
+  font-family: var(--player);
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-align: center;
+  width: 100%;
+  transition: color 160ms, opacity 160ms;
+}
+
+.track:hover { color: var(--ink); opacity: 0.85; }
+.track.is-current { color: var(--ink); }
 
 .cover {
   width: min(440px, 82vw);
@@ -107,10 +114,7 @@ main {
   gap: 18px;
 }
 
-.transport--icons {
-  margin-top: 10px;
-  gap: 12px;
-}
+.transport--icons { margin-top: 10px; gap: 12px; }
 
 .btn {
   appearance: none;
@@ -119,18 +123,13 @@ main {
   color: var(--ink);
   padding: 6px 4px;
   cursor: pointer;
-  transition: opacity 180ms ease;
+  transition: opacity 180ms;
 }
 
-.btn:hover {
-  opacity: 0.6;
-}
+.btn:hover { opacity: 0.6; }
+.btn:active { opacity: 0.45; }
 
-.btn:active {
-  opacity: 0.45;
-}
-
-.btn__label {
+.btn__label, .back__label {
   font-family: var(--player);
   font-size: 13px;
   font-weight: 300;
@@ -138,65 +137,30 @@ main {
   text-transform: uppercase;
 }
 
-.btn__icon {
-  font-family: var(--ui);
-  font-size: 16px;
-  line-height: 1;
-}
-
 .btn--primary .btn__label {
   text-decoration: underline;
-  text-decoration-thickness: 1px;
   text-underline-offset: 6px;
   text-decoration-color: rgba(20, 20, 20, 0.18);
 }
 
-/* Credits (bottom-right) */
 .credits {
-  position: absolute;
+  position: fixed;
   right: clamp(12px, 2.8vw, 26px);
   bottom: clamp(10px, 2.2vw, 22px);
   max-width: min(420px, 70vw);
-  padding: 0;
   color: var(--muted);
   text-align: right;
+  font-size: 10px;
   opacity: 0.9;
 }
 
-.credits__heading {
-  margin: 0 0 4px 0;
-  font-size: 10px;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
-  font-family: var(--ui);
-}
+.credits__heading { margin: 0 0 4px; font-family: var(--ui); }
+.credits__line { margin: 0; line-height: 1.25; }
+.credits__ogg { font-family: var(--player); text-transform: uppercase; }
+.credits__title { font-family: var(--poemTitle); }
+.credits__poem { font-family: var(--poem); font-style: italic; }
 
-.credits__line {
-  margin: 0;
-  font-size: 10px;
-  line-height: 1.25;
-  letter-spacing: 0.006em;
-}
-
-.credits__ogg {
-  font-family: var(--player);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.credits__title {
-  font-family: var(--poemTitle);
-}
-
-.credits__poem {
-  font-family: var(--poem);
-  font-style: italic;
-}
-
-/* Page 2 */
-.page--poems {
-  position: relative;
-}
+.page--poems { position: relative; }
 
 .poems__top {
   position: absolute;
@@ -214,35 +178,20 @@ main {
   padding: 6px 4px;
   cursor: pointer;
   color: var(--muted);
-  transition: opacity 180ms ease;
+  transition: opacity 180ms;
 }
 
-.back--icon {
-  padding: 6px 2px;
-}
-
-.back:hover {
-  opacity: 0.6;
-}
-
-.back__label {
-  font-family: var(--player);
-  font-weight: 300;
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
+.back:hover { opacity: 0.6; }
+.back--icon { padding: 6px 2px; }
 
 .poems__title {
-  margin: 0 0 28px 0;
+  margin: 0 0 28px;
   width: min(680px, 86vw);
   font-family: var(--poemTitle);
   font-size: clamp(18px, 1.7vw, 22px);
   font-weight: 400;
-  font-style: normal;
   line-height: 1.35;
   color: rgba(20, 20, 20, 0.78);
-  letter-spacing: 0.012em;
   text-align: left;
 }
 
@@ -255,22 +204,11 @@ main {
   font-style: italic;
   line-height: 1.75;
   color: rgba(20, 20, 20, 0.78);
-  letter-spacing: 0.012em;
   text-align: left;
 }
 
-/* Fade */
-.is-fading {
-  opacity: 0;
-  filter: blur(1.4px);
-}
+.is-fading { opacity: 0; filter: blur(1.4px); }
 
 @media (prefers-reduced-motion: reduce) {
-  .page {
-    transition: none;
-  }
-  .btn {
-    transition: none;
-  }
+  .page, .btn, .back { transition: none; }
 }
-
