@@ -52,10 +52,14 @@ function goToNextTrack() {
   audio.play().catch(() => {});
 }
 
+var PLAY_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+var PAUSE_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
 function setAudioUI(playing) {
-  document.querySelectorAll("[data-action='toggle-audio']").forEach((btn) => {
-    const icon = btn.querySelector("[data-audio-icon]");
-    if (icon) icon.textContent = playing ? "⏸" : "▶︎";
+  document.querySelectorAll("[data-action='toggle-audio']").forEach(function (btn) {
+    var icon = btn.querySelector("[data-audio-icon]");
+    if (icon) icon.innerHTML = playing ? PAUSE_ICON : PLAY_ICON;
+    btn.setAttribute("aria-label", playing ? "Pause" : "Play");
   });
 }
 
@@ -98,7 +102,7 @@ document.addEventListener("click", (e) => {
 poems.hidden = true;
 cover.hidden = false;
 ensureSrc();
-setAudioUI(!audio?.paused);
+setAudioUI(audio && !audio.paused);
 setCurrentTrack();
 
 audio?.addEventListener("play", () => setAudioUI(true));
